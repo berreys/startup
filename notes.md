@@ -2,7 +2,7 @@
 
 ## Git Notes
 
-```git clone https://github.com/berreys/startup```
+```git clone https://github.com/berreys/startup``` - Clones repository to local directory
 
 ```git pull``` - Pulls from repository to local copy
 

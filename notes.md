@@ -9,3 +9,9 @@
 ```git commit``` - Commits local changes
 
 ```git push``` - Pushes commits to repository
+
+
+## IP Address
+http://34.198.68.87/
+
+ssh -i production.pem ubuntu@34.198.68.87

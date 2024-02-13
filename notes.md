@@ -18,4 +18,4 @@ ssh -i production.pem ubuntu@34.198.68.87
 
 ## Deploy Command
 
-./deployFiles.sh -k "C:\Users\saber\Desktop\Winter 2024\CS 260\production.pem" -h venmo-calc.click -s startup
+```./deployFiles.sh -k "C:\Users\saber\Desktop\Winter 2024\CS 260\production.pem" -h venmo-calc.click -s startup```

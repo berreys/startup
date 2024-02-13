@@ -34,3 +34,6 @@ As a user enters the amount they have spent, it will populate in the group for o
 ![alt text](image2.jpeg)
 
 ![alt text](<image1 (6).jpeg>)
+
+## HTML Deliverable
+All four pages required in this application have been created in HTML. They have no functionality, but each one is reachable through the buttons on the pages. 

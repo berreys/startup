@@ -37,3 +37,6 @@ As a user enters the amount they have spent, it will populate in the group for o
 
 ## HTML Deliverable
 All four pages required in this application have been created in HTML. They have no functionality, but each one is reachable through the buttons on the pages. 
+
+## CSS Deliverable
+All four pages are now styled correctly with CSS. They are still lacking in functionality, but they don't look bad anymore. I am already pretty comfortable with CSS from prior work, but I learned a few things as I worked on this deliverable. For example, I played around a lot with gradients and shadows to make my pages more aesthetically pleasing. I also learned about the "@media" selector to make pages more responsive to screen sizes. 

@@ -19,10 +19,16 @@ header{
     background-color: var(--background-color);
     color: var(--text-color);
     margin: 0px 0px;
+    display: flex;
 }
 .title-words{
     margin: 0px 0px;
     padding: 10px 10px;
+}
+.username{
+    margin: 0px 0px;
+    padding: 10px 10px;
+    margin-left: auto;
 }
 .login-card{
     background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
@@ -78,6 +84,11 @@ header{
     width: 100%;
     margin-top: 10px;
 }
+.password-warning{
+    color: rgba(255, 0, 0, 0.658);
+    width: fit-content;
+    margin: 0 auto;
+}
 footer{
     position: fixed;
     left: 0;
@@ -89,4 +100,51 @@ img{
     width:20px;
     filter: invert(100%);
     margin-bottom: -5px;
+}
+.back-button{
+    margin: auto 0px auto 10px;
+}
+.back-button:hover{
+    cursor: pointer;
+}
+.group-card{
+    background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
+    padding: 10px 25px;
+    width: 60%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height:fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+.group-card a{
+    text-decoration: none;
+}
+.group-card li{
+    display: flex;
+    list-style: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.541);
+    text-decoration: none;
+    p{
+        
+    }
+    button{
+        background-color: rgba(255, 0, 0, 0.658);
+        margin: auto 25px auto auto;
+        height: 2em;
+        width: 2em;
+        border: none;
+        border-radius: 100000px;
+        padding: 0px 0px;
+        font-weight: bold;
+    }
+}
+.group-card li button:hover{
+    cursor: pointer;
+}
+.group-card h1{
+    width: fit-content;
+    margin: 20px auto 0 auto;
 }

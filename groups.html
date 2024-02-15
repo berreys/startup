@@ -11,19 +11,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venmo Calculator</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   </head>
   <body>
-    <header style="border: 1px solid black;">
-        <h1>VENMO CALCULATOR</h1>
-        <h1>USERNAME</h1>
-        <button onclick="history.back()">Back</button>
+    <header>
+      <span class="material-symbols-outlined back-button" onclick="history.back()">
+        arrow_back
+      </span>
+      <h1 class="title-words">VENMO CALCULATOR</h1>
+      <h1 class="username">USERNAME</h1>
+        
     </header>
-    <main style="border: 1px solid black; margin-top: 5px;">
+    <main>
+      <div class="group-card">
         <h1>Select or add group</h1>
         <ul>
             <li>
-                <a href="./groupview.html"><p>Group 1</p></a>
-                <button>X</button>
+              <a href="./groupview.html"><p>Group 1</p></a>
+              <button>X</button>
             </li>
             <li>
                 <a href="./groupview.html"><p>Group 1</p></a>
@@ -34,7 +39,17 @@
                 <button>X</button>
             </li>
         </ul>
-        <a href="./joingroup.html"><button>+ Add Group</button></a>
+        <div class="button-container" style="width:80%">
+          <a href="./joingroup.html"><button>+ Add Group</button></a>
+        </div>
+      </div>
     </main>
+    <footer>
+      <p>Sam Berrey</hp>
+      <a href="https://github.com/berreys/startup" target="_blank">
+        <img src="./github-icon.jpg"height="20">
+        </img>
+      </a>
+    </footer>
   </body>
 </html>

@@ -4,6 +4,7 @@
     --card-color1: #2e2e2e;
     --card-color2: #4d4d4d;
     --accent: #e6e200;
+    --warning: rgba(255, 0, 0, 0.658);
 }
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
     -webkit-appearance: none;
@@ -85,8 +86,8 @@ header{
     width: 100%;
     margin-top: 10px;
 }
-.password-warning{
-    color: rgba(255, 0, 0, 0.658);
+.input-warning{
+    color: var(--warning);
     width: fit-content;
     margin: 0 auto;
 }
@@ -133,7 +134,7 @@ img{
         width: auto;
     }
     button{
-        background-color: rgba(255, 0, 0, 0.658);
+        background-color: var(--warning);
         margin: auto 25px auto auto;
         height: 2em;
         width: 2em;

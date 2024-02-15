@@ -100,6 +100,7 @@ img{
     width:20px;
     filter: invert(100%);
     margin-bottom: -5px;
+    margin-left: 8px;
 }
 .back-button{
     margin: auto 0px auto 10px;
@@ -128,7 +129,7 @@ img{
     border-bottom: 2px solid rgba(255, 255, 255, 0.541);
     text-decoration: none;
     p{
-        
+        width: auto;
     }
     button{
         background-color: rgba(255, 0, 0, 0.658);
@@ -147,4 +148,60 @@ img{
 .group-card h1{
     width: fit-content;
     margin: 20px auto 0 auto;
+}
+
+.groupid-card{
+    background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
+    padding: 10px 25px;
+    width: 40%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height:fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+.groupid-card h1{
+    width: fit-content;
+    margin: 20px auto 0 auto;
+}
+.groupid-card input{
+    margin:10px -10px;
+    width:100%;
+    padding: 10px;
+    font-size: 1.2em;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.541);
+    outline: 0;
+    height: 2em;
+}
+.groupid-card input:focus{
+    border-bottom: 4px solid rgba(255, 255, 255, 0.541);
+    margin-bottom: 8px;
+}
+.groupid-card input:focus::placeholder{
+    color: var(--text-color);
+}
+.groupid-inputs{
+    display: flex;
+    width: 60%;
+    margin: 0 auto;
+}
+.groupid-inputs a{
+    height: 100%;
+    margin: auto auto auto auto;
+}
+.groupid-inputs button{
+    background-color: transparent;
+    border: none;
+    font-size: 1.2em;
+    width: fit-content;
+    height: 100%;
+    border-bottom: 2px solid transparent;
+}
+.groupid-inputs button:hover{
+    border-bottom: 2px solid rgba(255, 255, 255, 0.541);
+    cursor: pointer;
 }

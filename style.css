@@ -5,6 +5,10 @@
     --card-color2: #4d4d4d;
     --accent: #e6e200;
 }
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin:0;
+}
 
 *{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -56,9 +60,6 @@ header{
 .login-card input:focus{
     border-bottom: 4px solid rgba(255, 255, 255, 0.541);
     margin-bottom: 8px;
-}
-.login-card input:focus::placeholder{
-    color: var(--text-color);
 }
 .login-inputs{
     height: 10em;
@@ -181,9 +182,6 @@ img{
     border-bottom: 4px solid rgba(255, 255, 255, 0.541);
     margin-bottom: 8px;
 }
-.groupid-card input:focus::placeholder{
-    color: var(--text-color);
-}
 .groupid-inputs{
     display: flex;
     width: 60%;
@@ -204,4 +202,60 @@ img{
 .groupid-inputs button:hover{
     border-bottom: 2px solid rgba(255, 255, 255, 0.541);
     cursor: pointer;
+}
+.group-view-card{
+    background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
+    padding: 10px 25px;
+    width: 40%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height:fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+.group-view-card h1{
+    width: fit-content;
+    margin: 20px auto 0 auto;
+}
+.group-view-inputs{
+    display: flex;
+    width:50%;
+    margin: 0 auto;
+}
+.group-view-inputs p{
+    height: fit-content;
+    margin: auto 5px auto 0;
+    font-size: 2.2em;
+    
+}
+.group-view-inputs input{
+    margin:10px -10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2em;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.541);
+    outline: 0;
+    height: 2em;
+}
+.group-view-inputs input:focus{
+    border-bottom: 4px solid rgba(255, 255, 255, 0.541);
+    margin-bottom: 8px;
+}
+.group-view-table{
+    margin: 10px auto 0px auto;
+    border: 2px solid rgba(255, 255, 255, 0.541);
+    border-collapse: collapse;
+    width: 80%;
+}
+.group-view-table th{
+    border: 2px solid rgba(255, 255, 255, 0.541);
+    margin: 0px 0px;
+}
+.group-view-table td{
+    border: 1px solid rgba(255, 255, 255, 0.541);
+    margin: 0px 0px;
 }

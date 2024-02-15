@@ -4,7 +4,7 @@
     --card-color1: #2e2e2e;
     --card-color2: #4d4d4d;
     --accent: #e6e200;
-    --warning: rgba(255, 0, 0, 0.658);
+    --warning: rgb(255, 77, 33);
 }
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
     -webkit-appearance: none;
@@ -15,248 +15,789 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: var(--text-color);
 }
-body{
-    padding: 0px 0px;
-    margin: 0px 0px;
-    background-color: var(--background-color);
-}
-header{
-    background-color: var(--background-color);
-    color: var(--text-color);
-    margin: 0px 0px;
-    display: flex;
-}
-.title-words{
-    margin: 0px 0px;
-    padding: 10px 10px;
-}
-.username{
-    margin: 0px 0px;
-    padding: 10px 10px;
-    margin-left: auto;
-}
-.login-card{
-    background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
-    padding: 10px 25px;
-    width: fit-content;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    height: 300px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
-}
-.login-card input{
-    margin:10px -10px;
-    width:100%;
-    padding: 10px;
-    font-size: 1.2em;
-    border: none;
-    background-color: transparent;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.541);
-    outline: 0;
-    height: 2em;
-}
-.login-card input:focus{
-    border-bottom: 4px solid rgba(255, 255, 255, 0.541);
-    margin-bottom: 8px;
-}
-.login-inputs{
-    height: 10em;
-}
-.login-card h1{
-    width: fit-content;
-    margin: 20px auto 0 auto;
-}
-.button-container{
-    width: 100%;
-    margin: 0 auto;
-    :hover{
+@media (min-width: 800px){
+    body{
+        padding: 0px 0px;
+        margin: 0px 0px;
+        background-color: var(--background-color);
+    }
+    header{
+        background-color: var(--background-color);
+        color: var(--text-color);
+        margin: 0px 0px;
+        display: flex;
+    }
+    .title-words{
+        margin: 0px 0px;
+        padding: 10px 10px;
+    }
+    .username{
+        margin: 0px 0px;
+        padding: 10px 10px;
+        margin-left: auto;
+    }
+    .login-card{
+        background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
+        padding: 10px 25px;
+        width: fit-content;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        height: 300px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+    .login-card input{
+        margin:10px -10px;
+        width:100%;
+        padding: 10px;
+        font-size: 1.2em;
+        border: none;
+        background-color: transparent;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.541);
+        outline: 0;
+        height: 2em;
+    }
+    .login-card input:focus{
+        border-bottom: 4px solid rgba(255, 255, 255, 0.541);
+        margin-bottom: 8px;
+    }
+    .login-inputs{
+        height: 10em;
+    }
+    .login-card h1{
+        width: fit-content;
+        margin: 20px auto 0 auto;
+    }
+    .button-container{
+        width: 100%;
+        margin: 0 auto;
+        :hover{
+            cursor: pointer;
+        }
+    }
+    .button-container button{
+        font-size: 1.5em;
+        border-radius: 100000px;
+        padding: 10px;
+        border: none;
+        background-color: var(--accent);
+        color: var(--card-color1);
+        width: 100%;
+        margin-top: 10px;
+    }
+    .input-warning{
+        color: var(--warning);
+        width: fit-content;
+        margin: 0 auto;
+    }
+    footer{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+    }
+    img{
+        width:20px;
+        filter: invert(100%);
+        margin-bottom: -5px;
+        margin-left: 8px;
+    }
+    .back-button{
+        margin: auto 0px auto 10px;
+    }
+    .back-button:hover{
         cursor: pointer;
     }
-}
-.button-container button{
-    font-size: 1.5em;
-    border-radius: 100000px;
-    padding: 10px;
-    border: none;
-    background-color: var(--accent);
-    color: var(--card-color1);
-    width: 100%;
-    margin-top: 10px;
-}
-.input-warning{
-    color: var(--warning);
-    width: fit-content;
-    margin: 0 auto;
-}
-footer{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-}
-img{
-    width:20px;
-    filter: invert(100%);
-    margin-bottom: -5px;
-    margin-left: 8px;
-}
-.back-button{
-    margin: auto 0px auto 10px;
-}
-.back-button:hover{
-    cursor: pointer;
-}
-.group-card{
-    background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
-    padding: 10px 25px;
-    width: 60%;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    height:fit-content;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
-}
-.group-card a{
-    text-decoration: none;
-}
-.group-card li{
-    display: flex;
-    list-style: none;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.541);
-    text-decoration: none;
-    p{
-        width: auto;
+    .group-card{
+        background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
+        padding: 10px 25px;
+        width: 60%;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        height:fit-content;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
     }
-    button{
-        background-color: var(--warning);
-        margin: auto 25px auto auto;
-        height: 2em;
-        width: 2em;
+    .group-card a{
+        text-decoration: none;
+    }
+    .group-card li{
+        display: flex;
+        list-style: none;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.541);
+        text-decoration: none;
+        p{
+            width: auto;
+        }
+        button{
+            background-color: var(--warning);
+            margin: auto 25px auto auto;
+            height: 2em;
+            width: 2em;
+            border: none;
+            border-radius: 100000px;
+            padding: 0px 0px;
+            font-weight: bold;
+        }
+    }
+    .group-card li button:hover{
+        cursor: pointer;
+    }
+    .group-card h1{
+        width: fit-content;
+        margin: 20px auto 0 auto;
+    }
+    
+    .groupid-card{
+        background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
+        padding: 10px 25px;
+        width: 40%;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        height:fit-content;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+    .groupid-card h1{
+        width: fit-content;
+        margin: 20px auto 0 auto;
+    }
+    .groupid-card input{
+        margin:10px -10px;
+        width:100%;
+        padding: 10px;
+        font-size: 1.2em;
         border: none;
-        border-radius: 100000px;
-        padding: 0px 0px;
-        font-weight: bold;
+        background-color: transparent;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.541);
+        outline: 0;
+        height: 2em;
     }
-}
-.group-card li button:hover{
-    cursor: pointer;
-}
-.group-card h1{
-    width: fit-content;
-    margin: 20px auto 0 auto;
+    .groupid-card input:focus{
+        border-bottom: 4px solid rgba(255, 255, 255, 0.541);
+        margin-bottom: 8px;
+    }
+    .groupid-inputs{
+        display: flex;
+        width: 60%;
+        margin: 0 auto;
+    }
+    .groupid-inputs a{
+        height: 100%;
+        margin: auto auto auto auto;
+    }
+    .groupid-inputs button{
+        background-color: transparent;
+        border: none;
+        font-size: 1.2em;
+        width: fit-content;
+        height: 100%;
+        border-bottom: 2px solid transparent;
+    }
+    .groupid-inputs button:hover{
+        border-bottom: 2px solid rgba(255, 255, 255, 0.541);
+        cursor: pointer;
+    }
+    .group-view-card{
+        background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
+        padding: 10px 25px;
+        width: 40%;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        height:fit-content;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+    .group-view-card h1{
+        width: fit-content;
+        margin: 20px auto 0 auto;
+    }
+    .group-view-inputs{
+        display: flex;
+        width:50%;
+        margin: 0 auto;
+    }
+    .group-view-inputs p{
+        height: fit-content;
+        margin: auto 5px auto 0;
+        font-size: 2.2em;
+        
+    }
+    .group-view-inputs input{
+        margin:10px -10px;
+        width: 100%;
+        padding: 10px;
+        font-size: 1.2em;
+        border: none;
+        background-color: transparent;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.541);
+        outline: 0;
+        height: 2em;
+    }
+    .group-view-inputs input:focus{
+        border-bottom: 4px solid rgba(255, 255, 255, 0.541);
+        margin-bottom: 8px;
+    }
+    .group-view-table{
+        margin: 10px auto 0px auto;
+        border: 2px solid rgba(255, 255, 255, 0.541);
+        border-collapse: collapse;
+        width: 80%;
+    }
+    .group-view-table th{
+        border: 2px solid rgba(255, 255, 255, 0.541);
+        margin: 0px 0px;
+    }
+    .group-view-table td{
+        border: 1px solid rgba(255, 255, 255, 0.541);
+        margin: 0px 0px;
+    }
 }
 
-.groupid-card{
-    background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
-    padding: 10px 25px;
-    width: 40%;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    height:fit-content;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
-}
-.groupid-card h1{
-    width: fit-content;
-    margin: 20px auto 0 auto;
-}
-.groupid-card input{
-    margin:10px -10px;
-    width:100%;
-    padding: 10px;
-    font-size: 1.2em;
-    border: none;
-    background-color: transparent;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.541);
-    outline: 0;
-    height: 2em;
-}
-.groupid-card input:focus{
-    border-bottom: 4px solid rgba(255, 255, 255, 0.541);
-    margin-bottom: 8px;
-}
-.groupid-inputs{
-    display: flex;
-    width: 60%;
-    margin: 0 auto;
-}
-.groupid-inputs a{
-    height: 100%;
-    margin: auto auto auto auto;
-}
-.groupid-inputs button{
-    background-color: transparent;
-    border: none;
-    font-size: 1.2em;
-    width: fit-content;
-    height: 100%;
-    border-bottom: 2px solid transparent;
-}
-.groupid-inputs button:hover{
-    border-bottom: 2px solid rgba(255, 255, 255, 0.541);
-    cursor: pointer;
-}
-.group-view-card{
-    background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
-    padding: 10px 25px;
-    width: 40%;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    height:fit-content;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
-}
-.group-view-card h1{
-    width: fit-content;
-    margin: 20px auto 0 auto;
-}
-.group-view-inputs{
-    display: flex;
-    width:50%;
-    margin: 0 auto;
-}
-.group-view-inputs p{
-    height: fit-content;
-    margin: auto 5px auto 0;
-    font-size: 2.2em;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+    This is for smaller screens
+*/
+@media (min-width: 577px) and (max-width: 799px){
+    body{
+        padding: 0px 0px;
+        margin: 0px 0px;
+        background-color: var(--background-color);
+    }
+    header{
+        background-color: var(--background-color);
+        color: var(--text-color);
+        margin: 0px 0px;
+        display: flex;
+    }
+    h1{
+        font-size: 1.5em;
+    }
+    .title-words{
+        margin: 0px 0px;
+        padding: 10px 10px;
+    }
+    .username{
+        margin: 0px 0px;
+        padding: 10px 10px;
+        margin-left: auto;
+    }
+    .login-card{
+        background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
+        padding: 10px 25px;
+        width: fit-content;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        height: 300px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+    .login-card input{
+        margin:10px -10px;
+        width:100%;
+        padding: 10px;
+        font-size: 1.2em;
+        border: none;
+        background-color: transparent;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.541);
+        outline: 0;
+        height: 2em;
+    }
+    .login-card input:focus{
+        border-bottom: 4px solid rgba(255, 255, 255, 0.541);
+        margin-bottom: 8px;
+    }
+    .login-inputs{
+        height: 10em;
+
+    }
+    .login-card h1{
+        width: fit-content;
+        margin: 20px auto 0 auto;
+    }
+    .button-container{
+        width: 100%;
+        margin: 0 auto;
+        :hover{
+            cursor: pointer;
+        }
+    }
+    .button-container button{
+        font-size: 1em;
+        border-radius: 100000px;
+        padding: 10px;
+        border: none;
+        background-color: var(--accent);
+        color: var(--card-color1);
+        width: 100%;
+        margin-top: 10px;
+    }
+    .input-warning{
+        color: var(--warning);
+        width: fit-content;
+        margin: 0 auto;
+    }
+    footer{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+    }
+    img{
+        width:20px;
+        filter: invert(100%);
+        margin-bottom: -5px;
+        margin-left: 8px;
+    }
+    .back-button{
+        margin: auto 0px auto 10px;
+    }
+    .back-button:hover{
+        cursor: pointer;
+    }
+    .group-card{
+        background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
+        padding: 10px 25px;
+        width: 60%;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        height:fit-content;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+    .group-card a{
+        text-decoration: none;
+    }
+    .group-card li{
+        display: flex;
+        list-style: none;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.541);
+        text-decoration: none;
+        p{
+            width: auto;
+        }
+        button{
+            background-color: var(--warning);
+            margin: auto 25px auto auto;
+            height: 2em;
+            width: 2em;
+            border: none;
+            border-radius: 100000px;
+            padding: 0px 0px;
+            font-weight: bold;
+        }
+    }
+    .group-card li button:hover{
+        cursor: pointer;
+    }
+    .group-card h1{
+        width: fit-content;
+        margin: 20px auto 0 auto;
+    }
     
+    .groupid-card{
+        background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
+        padding: 10px 25px;
+        width: 75%;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        height:fit-content;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+    .groupid-card h1{
+        width: fit-content;
+        margin: 20px auto 0 auto;
+    }
+    .groupid-card input{
+        margin:10px -10px;
+        width:100%;
+        padding: 10px;
+        font-size: 1.2em;
+        border: none;
+        background-color: transparent;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.541);
+        outline: 0;
+        height: 2em;
+    }
+    .groupid-card input:focus{
+        border-bottom: 4px solid rgba(255, 255, 255, 0.541);
+        margin-bottom: 8px;
+    }
+    .groupid-inputs{
+        display: flex;
+        width: 60%;
+        margin: 0 auto;
+    }
+    .groupid-inputs a{
+        height: 100%;
+        margin: auto auto auto auto;
+    }
+    .groupid-inputs button{
+        background-color: transparent;
+        border: none;
+        font-size: 1.2em;
+        width: fit-content;
+        height: 100%;
+        border-bottom: 2px solid transparent;
+    }
+    .groupid-inputs button:hover{
+        border-bottom: 2px solid rgba(255, 255, 255, 0.541);
+        cursor: pointer;
+    }
+    .group-view-card{
+        background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
+        padding: 10px 25px;
+        width: 75%;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        height:fit-content;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+    .group-view-card h1{
+        width: fit-content;
+        margin: 20px auto 0 auto;
+    }
+    .group-view-inputs{
+        display: flex;
+        width:50%;
+        margin: 0 auto;
+    }
+    .group-view-inputs p{
+        height: fit-content;
+        margin: auto 5px auto 0;
+        font-size: 2.2em;
+        
+    }
+    .group-view-inputs input{
+        margin:10px -10px;
+        width: 100%;
+        padding: 10px;
+        font-size: 1.2em;
+        border: none;
+        background-color: transparent;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.541);
+        outline: 0;
+        height: 2em;
+    }
+    .group-view-inputs input:focus{
+        border-bottom: 4px solid rgba(255, 255, 255, 0.541);
+        margin-bottom: 8px;
+    }
+    .group-view-table{
+        margin: 10px auto 0px auto;
+        border: 2px solid rgba(255, 255, 255, 0.541);
+        border-collapse: collapse;
+        width: 80%;
+    }
+    .group-view-table th{
+        border: 2px solid rgba(255, 255, 255, 0.541);
+        margin: 0px 0px;
+    }
+    .group-view-table td{
+        border: 1px solid rgba(255, 255, 255, 0.541);
+        margin: 0px 0px;
+    }
 }
-.group-view-inputs input{
-    margin:10px -10px;
-    width: 100%;
-    padding: 10px;
-    font-size: 1.2em;
-    border: none;
-    background-color: transparent;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.541);
-    outline: 0;
-    height: 2em;
-}
-.group-view-inputs input:focus{
-    border-bottom: 4px solid rgba(255, 255, 255, 0.541);
-    margin-bottom: 8px;
-}
-.group-view-table{
-    margin: 10px auto 0px auto;
-    border: 2px solid rgba(255, 255, 255, 0.541);
-    border-collapse: collapse;
-    width: 80%;
-}
-.group-view-table th{
-    border: 2px solid rgba(255, 255, 255, 0.541);
-    margin: 0px 0px;
-}
-.group-view-table td{
-    border: 1px solid rgba(255, 255, 255, 0.541);
-    margin: 0px 0px;
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+    This is for extra-small screens
+*/
+@media (max-width: 576px){
+    body{
+        padding: 0px 0px;
+        margin: 0px 0px;
+        background-color: var(--background-color);
+    }
+    header{
+        background-color: var(--background-color);
+        color: var(--text-color);
+        margin: 0px 0px;
+        display: flex;
+    }
+    h1{
+        font-size: 1em;
+    }
+    .title-words{
+        margin: 0px 0px;
+        padding: 10px 10px;
+    }
+    .username{
+        margin: 0px 0px;
+        padding: 10px 10px;
+        margin-left: auto;
+    }
+    .login-card{
+        background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
+        padding: 10px 25px;
+        width: 80%;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        height: 300px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+    .login-card input{
+        margin:10px -10px;
+        width:100%;
+        padding: 10px;
+        font-size: 1em;
+        border: none;
+        background-color: transparent;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.541);
+        outline: 0;
+        height: 2em;
+    }
+    .login-card input:focus{
+        border-bottom: 4px solid rgba(255, 255, 255, 0.541);
+        margin-bottom: 8px;
+    }
+    .login-inputs{
+        height: 10em;
+
+    }
+    .login-card h1{
+        width: fit-content;
+        margin: 20px auto 0 auto;
+    }
+    .button-container{
+        width: 100%;
+        margin: 0 auto;
+        :hover{
+            cursor: pointer;
+        }
+    }
+    .button-container button{
+        font-size: 1em;
+        border-radius: 100000px;
+        padding: 10px;
+        border: none;
+        background-color: var(--accent);
+        color: var(--card-color1);
+        width: 100%;
+        margin-top: 10px;
+    }
+    .input-warning{
+        color: var(--warning);
+        width: fit-content;
+        margin: 0 auto;
+    }
+    footer{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+    }
+    img{
+        width:20px;
+        filter: invert(100%);
+        margin-bottom: -5px;
+        margin-left: 8px;
+    }
+    .back-button{
+        margin: auto 0px auto 10px;
+    }
+    .back-button:hover{
+        cursor: pointer;
+    }
+    .group-card{
+        background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
+        padding: 10px 25px;
+        width: 80%;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        height:fit-content;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+    .group-card a{
+        text-decoration: none;
+    }
+    .group-card li{
+        display: flex;
+        list-style: none;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.541);
+        text-decoration: none;
+        p{
+            width: auto;
+        }
+        button{
+            background-color: var(--warning);
+            margin: auto 25px auto auto;
+            height: 2em;
+            width: 2em;
+            border: none;
+            border-radius: 100000px;
+            padding: 0px 0px;
+            font-weight: bold;
+        }
+    }
+    .group-card li button:hover{
+        cursor: pointer;
+    }
+    .group-card h1{
+        width: fit-content;
+        margin: 20px auto 0 auto;
+    }
+    
+    .groupid-card{
+        background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
+        padding: 10px 25px;
+        width: 80%;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        height:fit-content;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+    .groupid-card h1{
+        width: fit-content;
+        margin: 20px auto 0 auto;
+    }
+    .groupid-card input{
+        margin:10px -10px;
+        width:100%;
+        padding: 10px;
+        font-size: 1em;
+        border: none;
+        background-color: transparent;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.541);
+        outline: 0;
+        height: 2em;
+    }
+    .groupid-card input:focus{
+        border-bottom: 4px solid rgba(255, 255, 255, 0.541);
+        margin-bottom: 8px;
+    }
+    .groupid-inputs{
+        display: flex;
+        width: 75%;
+        margin: 0 auto;
+    }
+    .groupid-inputs a{
+        height: 100%;
+        margin: auto auto auto auto;
+    }
+    .groupid-inputs button{
+        background-color: transparent;
+        border: none;
+        font-size: 1.2em;
+        width: fit-content;
+        height: 100%;
+        border-bottom: 2px solid transparent;
+    }
+    .groupid-inputs button:hover{
+        border-bottom: 2px solid rgba(255, 255, 255, 0.541);
+        cursor: pointer;
+    }
+    .group-view-card{
+        background: linear-gradient(0deg, var(--card-color1) 0%, var(--card-color2) 100%);
+        padding: 10px 25px;
+        width: 80%;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        height:fit-content;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+    .group-view-card h1{
+        width: fit-content;
+        margin: 20px auto 0 auto;
+    }
+    .group-view-inputs{
+        display: flex;
+        width:75%;
+        margin: 0 auto;
+    }
+    .group-view-inputs p{
+        height: fit-content;
+        margin: auto 5px auto 0;
+        font-size: 2.2em;
+        
+    }
+    .group-view-inputs input{
+        margin:10px -10px;
+        width: 100%;
+        padding: 10px;
+        font-size: 1em;
+        border: none;
+        background-color: transparent;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.541);
+        outline: 0;
+        height: 2em;
+    }
+    .group-view-inputs input:focus{
+        border-bottom: 4px solid rgba(255, 255, 255, 0.541);
+        margin-bottom: 8px;
+    }
+    .group-view-table{
+        margin: 10px auto 0px auto;
+        border: 2px solid rgba(255, 255, 255, 0.541);
+        border-collapse: collapse;
+        width: 80%;
+    }
+    .group-view-table th{
+        border: 2px solid rgba(255, 255, 255, 0.541);
+        margin: 0px 0px;
+        font-size: .75em;
+    }
+    .group-view-table td{
+        border: 1px solid rgba(255, 255, 255, 0.541);
+        margin: 0px 0px;
+        font-size: .75em;
+    }
 }

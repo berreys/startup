@@ -1,3 +1,4 @@
+/* Universal Styles */
 :root{
     --text-color: #dadada;
     --background-color: #222222;
@@ -15,6 +16,18 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: var(--text-color);
 }
+
+
+
+
+
+
+
+
+
+
+
+/* Large Screen Sizes */
 @media (min-width: 800px){
     body{
         padding: 0px 0px;

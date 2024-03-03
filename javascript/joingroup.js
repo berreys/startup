@@ -1,8 +1,6 @@
-
-
 document.addEventListener('DOMContentLoaded', function() {
     loadUserName();
-    
+    console.log(localStorage.getItem('groups'));
 });
 
 function loadUserName() {

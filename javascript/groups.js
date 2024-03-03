@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     loadUserName();
     loadGroups();
+    console.log(localStorage.getItem('groups'));
 });
 
 function loadUserName() {
@@ -11,6 +12,9 @@ function loadUserName() {
 function loadGroups(){
     //retrieve the list of groups in the localstorage
     const groups = localStorage.getItem('groups');
+    if(groups === null){
+        return;
+    }
     //filter to only the groups that the user is a part of
     const deserializedGroups = JSON.parse(groups);
     var groupsToDisplay = []
@@ -29,7 +33,7 @@ function loadGroups(){
         var button = document.createElement("button");
         link.href = "./groupview.html";
         link.addEventListener('click', function(){
-            localStorage.setItem('currentGroup', item);
+            localStorage.setItem('currentGroup', JSON.stringify(item));
         })
         button.textContent = "X";
         text.textContent = item.id;

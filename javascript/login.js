@@ -1,3 +1,7 @@
+document.addEventListener('DOMContentLoaded', function() {
+  localStorage.clear();
+});
+
 function login() {
     const nameEl = document.querySelector('#username');
     localStorage.setItem('userName', nameEl.value);

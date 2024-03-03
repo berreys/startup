@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venmo Calculator</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="./javascript/login.js"></script>
   </head>
   <body>
     <header>
@@ -19,14 +20,14 @@
       <div class="login-card">
         <h1>Login</h1>
         <div class="login-inputs">
-          <input type="text" placeholder="Username">
+          <input type="text" id="username" placeholder="Username">
           <input type="password" placeholder="Password">
         </div>
         
         <div class="button-container">
-          <a href="./groups.html"><button>Submit</button></a>
+          <button onclick="login()">Submit</button>
         </div>
-        <p class="input-warning">Incorrect password</p>
+        <p class="input-warning" id="login-failure" style="visibility:hidden;">Incorrect password</p>
       </div>  
     </main>
     <footer>

@@ -24,8 +24,6 @@ function generateUUID() {
     });
 }
 function createGroup(){
-    localStorage.removeItem('groups');
-    
     const groupsFromStorage = localStorage.getItem('groups');
     let groupsList = null;
     //if there are already stored groups

@@ -26,12 +26,12 @@
       <div class="groupid-card">
         <h1>Enter Group ID</h1>
         <div class="groupid-inputs">
-          <input type="text" placeholder="1234-5678-9123">
-        <a href="./groupview.html"><button>Join</button></a>
+          <input type="text" class="groupIDInput" placeholder="1234-5678-9123">
+        <a><button onclick="joinGroup()">Join</button></a>
         </div>
         <div class="button-container" style="width:60%;">
           <button onclick="createGroup()">+ Create Group</button>
-          <p class="input-warning">Invalid Group ID</p>
+          <p class="input-warning" id="login-failure" style="visibility:hidden;">Invalid Group ID</p>
         </div>
           
       </div>

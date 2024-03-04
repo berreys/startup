@@ -60,6 +60,47 @@ function createGroup(){
         //redirect
         window.location.href = 'groupview.html';
     }
-
+}
+function joinGroup(){
+    //find inputted id
+    inputEl = document.querySelector('.groupIDInput');
+    inputID = inputEl.value;
+    console.log(inputID);
+    //retrieve groups from localstorage
+    const groupsString = localStorage.getItem('groups');
+    //if there are no groups, show error message
+    if(groupsString === null){
+        //TODO show error message
+        console.log('There are no groups to search through.');
+        document.getElementById('login-failure').style = "visibility:visible;";
+        return;
+    }
+    var groupsList = JSON.parse(groupsString);
+    /*
+        Find corresponding group, append the current user's username,
+        set current group to the corresponding group, and open the next
+        page.
+    */
+    var wasSuccess = false;
+    groupsList.forEach(function(item){
+        if(item.id === inputID){
+            if(!item.usernames.includes(localStorage.getItem('userName'))){
+                item.usernames.push(localStorage.getItem('userName'));
+                const newGroupsString = JSON.stringify(groupsList);
+                localStorage.setItem('groups', newGroupsString);
+            }
+            localStorage.setItem('currentGroup', JSON.stringify(item));
+            wasSuccess = true;
+            window.location.href = 'groupview.html';
+            
+        }
+    });
+    /*
+        If the id is invalid, show error message
+    */
+    if(!wasSuccess){
+        console.log('invalid group id entered');
+        document.getElementById('login-failure').style = "visibility:visible;";
+    }
     
 }

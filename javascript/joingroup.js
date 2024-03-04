@@ -11,6 +11,7 @@ class Group{
     constructor(username){
         this.id = generateUUID();
         this.usernames = [username];
+        this.values = [{username : username, value : 0.0}];
     }
 }
 //code copied from chatgpt
@@ -70,7 +71,6 @@ function joinGroup(){
     const groupsString = localStorage.getItem('groups');
     //if there are no groups, show error message
     if(groupsString === null){
-        //TODO show error message
         console.log('There are no groups to search through.');
         document.getElementById('login-failure').style = "visibility:visible;";
         return;
@@ -82,10 +82,12 @@ function joinGroup(){
         page.
     */
     var wasSuccess = false;
+    const username = localStorage.getItem('userName');
     groupsList.forEach(function(item){
         if(item.id === inputID){
-            if(!item.usernames.includes(localStorage.getItem('userName'))){
-                item.usernames.push(localStorage.getItem('userName'));
+            if(!item.usernames.includes(username)){
+                item.usernames.push(username);
+                item.values.push({username : username, value : 0.0});
                 const newGroupsString = JSON.stringify(groupsList);
                 localStorage.setItem('groups', newGroupsString);
             }

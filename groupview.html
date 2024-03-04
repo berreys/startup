@@ -26,28 +26,13 @@
             <h1 class="groupID">Group 1</h1>
             <div class="group-view-inputs">
                 <p>$</p>
-                <input type="number" placeholder="How much did you spend?">
+                <input id="input-value" type="number" placeholder="How much did you spend?" oninput="changeValue(this.value)">
             </div>  
             <table class="group-view-table">
                 <tr>
                     <th>User:</th>
                     <th>They Spent:</th>
                     <th>You Owe:</th>
-                </tr>
-                <tr>
-                    <td>User 1</td>
-                    <td>$10.00</td>
-                    <td>$0.00</td>
-                </tr>
-                <tr>
-                    <td>User 2</td>
-                    <td>$11.00</td>
-                    <td>$1.00</td>
-                </tr>
-                <tr>
-                    <td>User 3</td>
-                    <td>$10.00</td>
-                    <td>$0.00</td>
                 </tr>
             </table>
         </div>

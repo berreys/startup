@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-  localStorage.clear();
+  // localStorage.clear();
 });
 
 function login() {

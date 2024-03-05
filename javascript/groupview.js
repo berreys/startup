@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadGroupID();
     loadValues();
     loadUserVal();
+    getDebt();
 });
 
 function loadUserVal(){
@@ -45,9 +46,10 @@ function loadValues() {
             var td1 = document.createElement('td');
             td1.textContent = item.username;
             var td2 = document.createElement('td');
-            td2.textContent = item.value;
+            td2.textContent = '$' + item.value;
             var td3 = document.createElement('td');
-            td3.textContent = getDebt();
+            td3.textContent = '$0.00'
+            td3.className = item.username;
             tr.appendChild(td1);
             tr.appendChild(td2);
             tr.appendChild(td3);
@@ -144,5 +146,23 @@ function getDebt(){
         var debtsSerialized = JSON.stringify(debtsDeserialized);
         localStorage.setItem('debts', debtsSerialized);
     }
-    console.log(JSON.parse(localStorage.getItem('debts')));
+
+    var currentGroup = JSON.parse(localStorage.getItem('currentGroup'));
+    currentGroup.usernames.forEach(function(item){
+        var element = document.querySelector('.' + item);
+        if(element !== null){
+            var changed = false;
+            debtInformation.forEach(function(d){
+                if(d.receiver === item && d.sender === localStorage.getItem('userName')){
+                    element.textContent = '$' + d.amount;
+                    changed = true;
+                }
+            });
+            if(!changed){
+                element.textContent = '$0.00';
+            }
+        }
+    });
+    console.log(debtInformation);
+
 }

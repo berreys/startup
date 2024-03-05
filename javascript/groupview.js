@@ -58,10 +58,6 @@ function loadValues() {
 
 }
 
-function getDebt(){
-    return 4.5;
-}
-
 function changeValue(value){
     //get username and group from localstorage
     const username = localStorage.getItem('userName');
@@ -93,4 +89,60 @@ function changeValue(value){
     });
     //update changed group in localstorage
     localStorage.setItem('groups', JSON.stringify(groups));
+    getDebt();
+}
+
+
+
+
+
+
+function getDebt(){
+    var currUsersPayment = 0;
+    var values = JSON.parse(localStorage.getItem('currentGroup')).values;
+    var sum = 0;
+    values.forEach(function(item){
+        item.value = parseFloat(item.value);
+        sum += item.value;
+        if(item.username === localStorage.getItem('userName')){
+            currUsersPayment = item.value;
+        }
+    });
+    const avg = sum/values.length;
+    values.sort(function(a, b){
+        return a.value - b.value;
+    });
+
+    var debtInformation = [];
+
+    for(var i = 0; i < values.length - 1; i++){
+        debtInformation.push({sender: values[i].username, receiver: values[i+1].username, amount: parseFloat(avg)-parseFloat(values[i].value)});
+        values[i+1].value = parseFloat(values[i+1].value) - parseFloat(avg - parseFloat(values[i].value));
+    }
+
+    var debts = localStorage.getItem('debts');
+    var currGroupid = JSON.parse(localStorage.getItem('currentGroup')).id;
+    if(debts === null){
+        var debtsList = [];
+        debtsList.push({id : currGroupid, debtInfo : debtInformation});
+        var debtsSerialized = JSON.stringify(debtsList);
+        localStorage.setItem('debts', debtsSerialized);
+    }
+    else{
+        var debtsDeserialized = JSON.parse(debts);
+        var index = -1;
+        for(var i = 0; i < debtsDeserialized.length; i++){
+            if(debtsDeserialized[i].id === currGroupid){
+                index = i;
+                break;
+            }
+        }
+        if(index !== -1){
+            debtsDeserialized.splice(i, 1);
+        }
+        debtsDeserialized.push({id : currGroupid, debtInfo : debtInformation});
+        var debtsSerialized = JSON.stringify(debtsDeserialized);
+        localStorage.setItem('debts', debtsSerialized);
+    }
+    console.log(JSON.parse(localStorage.getItem('debts')));
 }

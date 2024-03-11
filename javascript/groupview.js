@@ -40,7 +40,7 @@ function loadValues() {
     var tableEl = document.querySelector('.group-view-table');
     currGroup.values.forEach(function(item){
         //make a new row for each person who is not the current user
-        // console.log(item);
+        //these rows will be augmented in real time using web sockets
         if(item.username !== username){
             var tr = document.createElement('tr');
             var td1 = document.createElement('td');

@@ -40,3 +40,14 @@ All four pages required in this application have been created in HTML. They have
 
 ## CSS Deliverable
 All four pages are now styled correctly with CSS. They are still lacking in functionality, but they don't look bad anymore. I am already pretty comfortable with CSS from prior work, but I learned a few things as I worked on this deliverable. For example, I played around a lot with gradients and shadows to make my pages more aesthetically pleasing. I also learned about the "@media" selector to make pages more responsive to screen sizes. I learned a lot about different color pallettes. I asked a few friends and colleagues to look at my site and give suggestions, and they offerred some advice on some of the colors and sizings I was using, which was very helpful.
+
+## Javacript Deliverable
+This web app is now completely functional in a browser for multiple users. Since all data is only stored in localstorage, multiple users must be using the same machine and the same browser. Functionality now includes the following:
+
+1) **Login** - Users can now enter a username and password to login. Authentication of correct password will be implemented when the database deliverable is implemented. For now, a user is created/logged in purely based on the username. This username is then displayed on the rest of the pages in the top right.
+
+2) **Database** - When logged in, users will see any groups they have joined. They can also create new groups by clicking the "+ Create Group" button. When a group is selected, they can also see all other users who have joined the group. They can also see how much each user entered as their payment.
+
+3) **Web Socket** - Right now, when users change how much money they entered, the database is changed to reflect that. When the websocket deliverable is implemented, this will be changed to automatically change both the database and be represented on any other logged-in user's screen.
+
+4) **Application Logic** - Users can see accurately how much they should venmo each person in the group to make the amount each person contributed equal. 

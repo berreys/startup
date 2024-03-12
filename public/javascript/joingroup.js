@@ -1,12 +1,29 @@
-document.addEventListener('DOMContentLoaded', function() {
-    loadUserName();
+var username;
+
+document.addEventListener('DOMContentLoaded', async function() {
+    await loadUserName();
     console.log(localStorage.getItem('groups'));
 });
 
-function loadUserName() {
-    const username = localStorage.getItem('userName');
+async function loadUserName() {
+    username = await getUsername();
     document.querySelector('.username').textContent = username;
 }
+async function getUsername(){
+    //send endpoint request to get current user's username
+    try{
+      const response = await fetch('/api/username');
+      usernameObj = await response.json();
+      //return username from response
+      return usernameObj.username;
+    }
+    catch(e){
+      //if error occured, return last stored username
+      console.log(e);
+      return localStorage.getItem('userName');
+    }
+}
+
 class Group{
     constructor(username){
         this.id = generateUUID();

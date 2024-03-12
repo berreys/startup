@@ -1,12 +1,28 @@
-document.addEventListener('DOMContentLoaded', function() {
-    loadUserName();
-    loadGroups();
-    console.log(localStorage.getItem('groups'));
+var username;
+
+document.addEventListener('DOMContentLoaded', async function() {
+    await loadUserName();
+    loadGroups()
 });
 
-function loadUserName() {
-    const username = localStorage.getItem('userName');
+async function loadUserName() {
+    username = await getUsername();
     document.querySelector('.username').textContent = username;
+}
+
+async function getUsername(){
+    //send endpoint request to get current user's username
+    try{
+      const response = await fetch('/api/username');
+      usernameObj = await response.json();
+      //return username from response
+      return usernameObj.username;
+    }
+    catch(e){
+      //if error occured, return last stored username
+      console.log(e);
+      return localStorage.getItem('userName');
+    }
 }
 
 function loadGroups(){
@@ -19,7 +35,7 @@ function loadGroups(){
     const deserializedGroups = JSON.parse(groups);
     var groupsToDisplay = []
     for(var i = 0; i < deserializedGroups.length; i++){
-        if(deserializedGroups[i].usernames.includes(localStorage.getItem('userName'))){
+        if(deserializedGroups[i].usernames.includes(username)){
             groupsToDisplay.push(deserializedGroups[i]);
         }
     }

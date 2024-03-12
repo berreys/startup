@@ -1,5 +1,7 @@
-document.addEventListener('DOMContentLoaded', function() {
-    loadUserName();
+var username;
+
+document.addEventListener('DOMContentLoaded', async function() {
+    await loadUserName();
     loadGroupID();
     loadValues();
     loadUserVal();
@@ -7,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function loadUserVal(){
-    const username = localStorage.getItem('userName');
     const currentGroup = JSON.parse(localStorage.getItem('currentGroup'));
     currentGroup.values.forEach(function(item){
         if(item.username === username && item.value !== 0){
@@ -17,10 +18,25 @@ function loadUserVal(){
     });
 }
 
-function loadUserName() {
-    const username = localStorage.getItem('userName');
+async function loadUserName() {
+    username = await getUsername();
     document.querySelector('.username').textContent = username;
-    // console.log(username);
+}
+
+async function getUsername(){
+    //send endpoint request to get current user's username
+    let username = 'unchanged';
+    try{
+      const response = await fetch('/api/username');
+      usernameObj = await response.json();
+      //return username from response
+      return usernameObj.username;
+    }
+    catch(e){
+      //if error occured, return last stored username
+      console.log(e);
+      return localStorage.getItem('userName');
+    }
 }
 
 function loadGroupID() {
@@ -31,7 +47,6 @@ function loadGroupID() {
 }
 
 function loadValues() {
-    const username = localStorage.getItem('userName');
     const currGroupStr = localStorage.getItem('currentGroup');
     if(currGroupStr === null){
         console.log('Something wrong happened. We are in the groupview page with no current group set.');
@@ -62,7 +77,6 @@ function loadValues() {
 
 function changeValue(value){
     //get username and group from localstorage
-    const username = localStorage.getItem('userName');
     const groupString = localStorage.getItem('currentGroup');
     var group = JSON.parse(groupString);
     //change the value of the user's value in the current group
@@ -106,7 +120,7 @@ function getDebt(){
     values.forEach(function(item){
         item.value = parseFloat(item.value);
         sum += item.value;
-        if(item.username === localStorage.getItem('userName')){
+        if(item.username === username){
             currUsersPayment = item.value;
         }
     });
@@ -153,7 +167,7 @@ function getDebt(){
         if(element !== null){
             var changed = false;
             debtInformation.forEach(function(d){
-                if(d.receiver === item && d.sender === localStorage.getItem('userName')){
+                if(d.receiver === item && d.sender === username){
                     element.textContent = '$' + d.amount;
                     changed = true;
                 }

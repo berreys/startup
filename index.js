@@ -14,17 +14,6 @@ app.use(express.static('public'));
 const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-// GetScores
-apiRouter.get('/scores', (_req, res) => {
-  res.send(scores);
-});
-
-// SubmitScore
-apiRouter.post('/score', (req, res) => {
-  scores = updateScores(req.body, scores);
-  res.send(scores);
-});
-
 // Return the application's default page if the path is unknown
 app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
@@ -32,4 +21,16 @@ app.use((_req, res) => {
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
+});
+
+var currentUsername = 'unchanged';
+
+apiRouter.get('/username', (_req, res) => {
+  const response = {username: currentUsername};
+  res.send(response);
+});
+
+apiRouter.post('/username', (req, res) => {
+  currentUsername = req.body.username;
+  res.send(currentUsername);
 });

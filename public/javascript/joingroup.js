@@ -104,7 +104,6 @@ async function joinGroup(){
         page.
     */
     var wasSuccess = false;
-    const username = username;
     groupsList.forEach(async function(item){
         if(item.id === inputID){
             if(!item.usernames.includes(username)){

@@ -51,3 +51,8 @@ This web app is now completely functional in a browser for multiple users. Since
 3) **Web Socket** - Right now, when users change how much money they entered, the database is changed to reflect that. When the websocket deliverable is implemented, this will be changed to automatically change both the database and be represented on any other logged-in user's screen.
 
 4) **Application Logic** - Users can see accurately how much they should venmo each person in the group to make the amount each person contributed equal. 
+
+## Service Deliverable
+This web app is still fully functional in a single browser. It now runs on a node.js server using express. Endpoints have been created for logging in and storing the groups. This means that rather than localstorage storing those values, they are accessible through API endpoints on the express server. 
+
+To view the functionality of the web app currently, I suggest logging in as a user, creating a group, then copying the group id. Once this is done, log in as another user and join that group by pasting the group id. This will allow you to see real data and experiment with how the app works.

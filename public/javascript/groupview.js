@@ -45,7 +45,7 @@ async function getUsername(){
     catch(e){
       //if error occured, return last stored username
       console.log(e);
-      return localStorage.getItem('userName');
+      return username;
     }
 }
 
@@ -85,7 +85,7 @@ function loadValues() {
 
 }
 
-function changeValue(value){
+async function changeValue(value){
     //get username and group from localstorage
     const groupString = localStorage.getItem('currentGroup');
     var group = JSON.parse(groupString);
@@ -100,7 +100,7 @@ function changeValue(value){
     const newGroupString = JSON.stringify(group);
     localStorage.setItem('currentGroup', newGroupString);
     //get list of groups from localstorage
-    var groups = JSON.parse(localStorage.getItem('groups'));
+    var groups = JSON.parse(await getGroups());
     //update changed group
     groups.forEach(function(item){
         console.log(item);
@@ -115,12 +115,9 @@ function changeValue(value){
     });
     //update changed group in localstorage
     localStorage.setItem('groups', JSON.stringify(groups));
+    await setGroups(JSON.stringify(groups));
     getDebt();
 }
-
-
-
-
 
 
 function getDebt(){
@@ -189,4 +186,42 @@ function getDebt(){
     });
     console.log(debtInformation);
 
+}
+
+async function getGroups(){
+    //send endpoint request to get the groups
+    try{
+        const response = await fetch('/api/groups');
+        groupsObj = await response.json();
+        console.log(groupsObj);
+        //return groups from response
+        if(groupsObj.groups.length === 0){
+            return null;
+        }
+        return JSON.stringify(groupsObj.groups);
+    }
+    catch(e){
+      //if error occured, return last stored groups
+      console.log(e);
+      return localStorage.getItem('groups');
+    }
+}
+
+async function setGroups(groups){
+    console.log('here!');
+    //create groups object to pass in the body
+    const groupsObj = {groups: groups};
+    //send endpoint request to store groups
+    try{
+      const response = await fetch('/api/groups', {
+        method: 'POST',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify(groupsObj),
+      });
+      console.log('response: ' + response);
+    }
+    catch{
+        //if any errors were thrown, store the groups locally
+        localStorage.setItem('groups', JSON.stringify(groups));
+    }
 }

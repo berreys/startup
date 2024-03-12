@@ -35,7 +35,7 @@ async function loadUserName() {
 
 async function getUsername(){
     //send endpoint request to get current user's username
-    let username = 'unchanged';
+    let username = '';
     try{
       const response = await fetch('/api/username');
       usernameObj = await response.json();

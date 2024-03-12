@@ -34,3 +34,29 @@ apiRouter.post('/username', (req, res) => {
   currentUsername = req.body.username;
   res.send(currentUsername);
 });
+
+var groups = [];
+
+apiRouter.get('/groups', (_req, res) => {
+  const response = {groups: groups};
+  res.send(response);
+});
+
+apiRouter.post('/groups', (req, res) => {
+  groups = JSON.parse(req.body.groups);
+  console.log(groups);
+  res.send(groups);
+});
+
+var debts = [];
+
+apiRouter.get('/debts', (_req, res) => {
+  const response = {debts: debts};
+  res.send(response);
+});
+
+apiRouter.post('/debts', (req, res) => {
+  debts = JSON.parse(req.body.debts);
+  console.log(debts);
+  res.send(debts);
+});

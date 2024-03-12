@@ -2,7 +2,7 @@ var username;
 
 document.addEventListener('DOMContentLoaded', async function() {
     await loadUserName();
-    loadGroups()
+    await loadGroups()
 });
 
 async function loadUserName() {
@@ -25,9 +25,9 @@ async function getUsername(){
     }
 }
 
-function loadGroups(){
+async function loadGroups(){
     //retrieve the list of groups in the localstorage
-    const groups = localStorage.getItem('groups');
+    const groups = await getGroups();
     if(groups === null){
         return;
     }
@@ -59,3 +59,20 @@ function loadGroups(){
         groupUL.appendChild(li);
     });
 }
+
+async function getGroups(){
+    //send endpoint request to get the groups
+    try{
+        const response = await fetch('/api/groups');
+        groupsObj = await response.json();
+        console.log(groupsObj);
+        //return groups from response
+        return JSON.stringify(groupsObj.groups);
+    }
+    catch(e){
+      //if error occured, return last stored groups
+      console.log(e);
+      return localStorage.getItem('groups');
+    }
+}
+  

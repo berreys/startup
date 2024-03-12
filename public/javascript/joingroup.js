@@ -2,7 +2,6 @@ var username;
 
 document.addEventListener('DOMContentLoaded', async function() {
     await loadUserName();
-    console.log(localStorage.getItem('groups'));
 });
 
 async function loadUserName() {
@@ -39,53 +38,59 @@ function generateUUID() {
         return v.toString(16);
     });
 }
-function createGroup(){
-    const groupsFromStorage = localStorage.getItem('groups');
+async function createGroup(){
+    const groupsFromStorage = await getGroups();
+    console.log("Here: " + groupsFromStorage);
     let groupsList = null;
     //if there are already stored groups
-    if(groupsFromStorage != null){
-        console.log('there are groups in localstorage');
+    if(groupsFromStorage !== null){
         //retrieve and deserialize groups
         groupsList = JSON.parse(groupsFromStorage);
-        console.log(groupsList);
+        console.log("GroupsList: " + groupsList + " :::end");
         //create new group
-        const newGroup = new Group(localStorage.getItem('userName'));
+        const newGroup = new Group(username);
         //add new group to list
         groupsList.push(newGroup);
         //serialize updated list
         const newGroupsString = JSON.stringify(groupsList);
         //update localstorage with new list of groups
         localStorage.setItem('groups', newGroupsString);
+        console.log('line 58')
+        await setGroups(newGroupsString);
         //update localstorage current group
         localStorage.setItem('currentGroup', JSON.stringify(newGroup));
         //redirect
+        console.log('redirect');
         window.location.href = 'groupview.html';
     }
     //if there are not already stored groups
     else{
         console.log('there are no groups in localstorage');
         //create new group
-        const group = new Group(localStorage.getItem('userName'));
+        const group = new Group(username);
         console.log(group);
         //create list of groups
         const groupsList = [group];
         //serialize list
         const groupsString = JSON.stringify(groupsList);
         //put list in localStorage
+        console.log('line 77')
         localStorage.setItem('groups', groupsString);
+        await setGroups(groupsString);
         //set current group in localStorage
         localStorage.setItem('currentGroup', JSON.stringify(group));
         //redirect
+        console.log('redirect 2');
         window.location.href = 'groupview.html';
     }
 }
-function joinGroup(){
+async function joinGroup(){
     //find inputted id
     inputEl = document.querySelector('.groupIDInput');
     inputID = inputEl.value;
     console.log(inputID);
     //retrieve groups from localstorage
-    const groupsString = localStorage.getItem('groups');
+    const groupsString = await getGroups();
     //if there are no groups, show error message
     if(groupsString === null){
         console.log('There are no groups to search through.');
@@ -99,14 +104,14 @@ function joinGroup(){
         page.
     */
     var wasSuccess = false;
-    const username = localStorage.getItem('userName');
-    groupsList.forEach(function(item){
+    const username = username;
+    groupsList.forEach(async function(item){
         if(item.id === inputID){
             if(!item.usernames.includes(username)){
                 item.usernames.push(username);
                 item.values.push({username : username, value : 0.0});
                 const newGroupsString = JSON.stringify(groupsList);
-                localStorage.setItem('groups', newGroupsString);
+                await setGroups(newGroupsString);
             }
             localStorage.setItem('currentGroup', JSON.stringify(item));
             wasSuccess = true;
@@ -122,4 +127,42 @@ function joinGroup(){
         document.getElementById('login-failure').style = "visibility:visible;";
     }
     
+}
+
+async function getGroups(){
+    //send endpoint request to get the groups
+    try{
+        const response = await fetch('/api/groups');
+        groupsObj = await response.json();
+        console.log(groupsObj);
+        //return groups from response
+        if(groupsObj.groups.length === 0){
+            return null;
+        }
+        return JSON.stringify(groupsObj.groups);
+    }
+    catch(e){
+      //if error occured, return last stored groups
+      console.log(e);
+      return localStorage.getItem('groups');
+    }
+}
+
+async function setGroups(groups){
+    console.log('here!');
+    //create groups object to pass in the body
+    const groupsObj = {groups: groups};
+    //send endpoint request to store groups
+    try{
+      const response = await fetch('/api/groups', {
+        method: 'POST',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify(groupsObj),
+      });
+      console.log('response: ' + response);
+    }
+    catch{
+        //if any errors were thrown, store the groups locally
+        localStorage.setItem('groups', JSON.stringify(groups));
+    }
 }

@@ -6,7 +6,17 @@ document.addEventListener('DOMContentLoaded', async function() {
     loadValues();
     loadUserVal();
     getDebt();
+    loadQuote();
 });
+
+function loadQuote(){
+    fetch('https://api.quotable.io/random')
+    .then((response) => response.json())
+    .then((data) => {
+      const element = document.querySelector('#quote');
+      element.textContent = 'Here is a random quote for you today: ' + data.content;
+    });
+}
 
 function loadUserVal(){
     const currentGroup = JSON.parse(localStorage.getItem('currentGroup'));

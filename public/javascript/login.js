@@ -14,6 +14,7 @@ async function create(){
   localStorage.setItem('userName', nameEl.value);
   loginOrCreate('/api/auth/create');
 }
+
 async function getUsername(){
   //send endpoint request to get current user's username
   try{

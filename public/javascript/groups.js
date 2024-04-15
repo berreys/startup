@@ -28,7 +28,8 @@ async function getUsername(){
 async function loadGroups(){
     //retrieve the list of groups in the localstorage
     const groups = await getGroups();
-    if(groups === null){
+    if(groups === undefined || groups === null || groups.length === 0){
+        console.log("UNDEFINED OR NULL OR 0 LENGTH");
         return;
     }
     //filter to only the groups that the user is a part of
@@ -63,11 +64,11 @@ async function loadGroups(){
 async function getGroups(){
     //send endpoint request to get the groups
     try{
-        const response = await fetch('/api/groups');
+        const response = await fetch('/api/getGroups');
         groupsObj = await response.json();
         console.log(groupsObj);
         //return groups from response
-        return JSON.stringify(groupsObj.groups);
+        return JSON.stringify(groupsObj);
     }
     catch(e){
       //if error occured, return last stored groups

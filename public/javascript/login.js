@@ -3,18 +3,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-function login() {
+async function login() {
   const nameEl = document.querySelector('#username');
   localStorage.setItem('userName', nameEl.value);
-  //TODO later validate valid username/password here
-  if(nameEl.value === 'invalid'){
-    document.getElementById('login-failure').style = "visibility:visible;";
-  }
-  else{
-    setUsername(nameEl.value)
-    .then(getUsername());
-    window.location.href = 'groups.html';
-  }
+  loginOrCreate('/api/auth/login');
+}
+async function create(){
+  const nameEl = document.querySelector('#username');
+  localStorage.setItem('userName', nameEl.value);
+  loginOrCreate('/api/auth/create');
 }
 async function getUsername(){
   //send endpoint request to get current user's username
@@ -53,5 +50,29 @@ async function setUsername(username){
   }
 }
 
-
+async function loginOrCreate(endpoint){
+  const userName = document.querySelector('#username').value;
+  const password = document.querySelector('#password').value;
+  console.log(`username: ${userName} password: ${password}`);
+  if(userName.length === 0 || password.length === 0){
+    document.getElementById('login-failure').style = "visibility:visible;";
+    return;
+  }
+  const response = await fetch(endpoint, {
+    method: 'post',
+    body: JSON.stringify({username: userName, password: password}),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    }
+  });
+  if(response.ok){
+    localStorage.setItem('userName', userName);
+    setUsername(userName).then(getUsername);
+    window.location.href = 'groups.html';
+  }
+  else{
+    const body = await response.json();
+    document.getElementById('login-failure').style = "visibility:visible;";
+  }
+}
 

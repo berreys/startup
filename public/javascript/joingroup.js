@@ -40,7 +40,6 @@ function generateUUID() {
 }
 async function createGroup(){
     const groupsFromStorage = await getGroups();
-    console.log("Here: " + groupsFromStorage);
     let groupsList = null;
     //if there are already stored groups
     if(groupsFromStorage !== null){
@@ -55,12 +54,12 @@ async function createGroup(){
         const newGroupsString = JSON.stringify(groupsList);
         //update localstorage with new list of groups
         localStorage.setItem('groups', newGroupsString);
-        console.log('line 58')
         await setGroups(newGroupsString);
         //update localstorage current group
         localStorage.setItem('currentGroup', JSON.stringify(newGroup));
         //redirect
         console.log('redirect');
+        saveGroup(newGroup);
         window.location.href = 'groupview.html';
     }
     //if there are not already stored groups
@@ -81,6 +80,7 @@ async function createGroup(){
         localStorage.setItem('currentGroup', JSON.stringify(group));
         //redirect
         console.log('redirect 2');
+        saveGroup(group);
         window.location.href = 'groupview.html';
     }
 }
@@ -112,6 +112,7 @@ async function joinGroup(){
                 const newGroupsString = JSON.stringify(groupsList);
                 await setGroups(newGroupsString);
             }
+            saveGroup(item);
             localStorage.setItem('currentGroup', JSON.stringify(item));
             wasSuccess = true;
             window.location.href = 'groupview.html';
@@ -131,7 +132,7 @@ async function joinGroup(){
 async function getGroups(){
     //send endpoint request to get the groups
     try{
-        const response = await fetch('/api/groups');
+        const response = await fetch('/api/getGroups');
         groupsObj = await response.json();
         console.log(groupsObj);
         //return groups from response
@@ -165,3 +166,36 @@ async function setGroups(groups){
         localStorage.setItem('groups', JSON.stringify(groups));
     }
 }
+
+async function saveGroup(group){
+    
+    try{
+        const response = await fetch('api/addGroup', {
+            method: 'POST',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(group)
+        });
+        const groups  = await response.json();
+        localStorage.setItem('groups', JSON.stringify(groups));
+    }
+    catch{
+
+    }
+}
+
+async function leaveGroup(group){
+
+}
+// async function addUserToGroup(group){
+//     try{
+//         const response = await fetch('api/getGroups');
+//         groups = await response.json();
+//         for(var i = 0; i < groups.length; i++){
+//             console.log(groups[i].id);
+//         }
+//         localStorage.setItem('groups', JSON.stringify(groups));
+//     }
+//     catch{
+//         console.log("Problem adding user to group");
+//     }
+// }

@@ -21,13 +21,14 @@
         <h1>Login</h1>
         <div class="login-inputs">
           <input type="text" id="username" placeholder="Username">
-          <input type="password" placeholder="Password">
+          <input type="password" id="password" placeholder="Password">
         </div>
         
         <div class="button-container">
-          <button onclick="login()">Submit</button>
+          <button onclick="login()">Login</button>
+          <button onclick="create()">Create</button>
         </div>
-        <p class="input-warning" id="login-failure" style="visibility:hidden;">Incorrect password</p>
+        <p class="input-warning" id="login-failure" style="visibility:hidden;">Invalid Credentials</p>
       </div>  
     </main>
     <footer>

@@ -24,7 +24,7 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
-var currentUsername = 'unchanged';
+// var currentUsername = 'unchanged';
 
 apiRouter.get('/username', (_req, res) => {
   const response = {username: currentUsername};
@@ -43,10 +43,13 @@ apiRouter.get('/groups', (_req, res) => {
   res.send(response);
 });
 
-apiRouter.post('/groups', (req, res) => {
+apiRouter.post('/groups', async (req, res) => {
   groups = JSON.parse(req.body.groups);
   console.log(groups);
   res.send(groups);
+  for(var i = 0; i < groups.length; i++){
+    await addGroup(groups[i]);
+  }
 });
 
 var debts = [];
@@ -94,9 +97,9 @@ async function createUser(username, password){
   await userCollection.insertOne(user);
   return user;
 }
-function addGroup(group){
-  groupCollection.deleteMany({id: group.id});
-  groupCollection.insertOne(group);
+async function addGroup(group){
+  await groupCollection.deleteMany({id: group.id});
+  await groupCollection.insertOne(group);
 }
 function getGroups(){
   const cursor = groupCollection.find();

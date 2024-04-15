@@ -191,7 +191,7 @@ function getDebt(){
 async function getGroups(){
     //send endpoint request to get the groups
     try{
-        const response = await fetch('/api/groups');
+        const response = await fetch('/api/getGroups');
         groupsObj = await response.json();
         console.log(groupsObj);
         //return groups from response

@@ -155,7 +155,6 @@ apiRouter.post('/addGroup', async (req, res) => {
 })
 
 
-
 //sets the users cookie
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {

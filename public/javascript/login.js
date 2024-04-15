@@ -8,6 +8,7 @@ async function login() {
   localStorage.setItem('userName', nameEl.value);
   loginOrCreate('/api/auth/login');
 }
+
 async function create(){
   const nameEl = document.querySelector('#username');
   localStorage.setItem('userName', nameEl.value);

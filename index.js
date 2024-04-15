@@ -81,12 +81,15 @@ const db = client.db('startup');
 const userCollection = db.collection('user');
 const groupCollection = db.collection('group');
 
+//returns user given their username
 function getUser(username){
   return userCollection.findOne({username: username});
 }
+//returns the user based on a token
 function getUserByToken(token){
   return userCollection.findOne({token: token});
 }
+//creates a user in the mongodb database
 async function createUser(username, password){
   const passwordHash = await bcrypt.hash(password, 10);
   const user = {
@@ -97,10 +100,12 @@ async function createUser(username, password){
   await userCollection.insertOne(user);
   return user;
 }
+//first deletes the old version of the group in the database, then adds the new information
 async function addGroup(group){
   await groupCollection.deleteMany({id: group.id});
   await groupCollection.insertOne(group);
 }
+//returns all groups in the group collection
 function getGroups(){
   const cursor = groupCollection.find();
   return cursor.toArray()

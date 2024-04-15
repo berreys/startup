@@ -126,6 +126,7 @@ apiRouter.post('/auth/create', async (req, res) => {
     });
   }
 });
+//login
 apiRouter.post('/auth/login', async (req, res) => {
   const user = await getUser(req.body.username);
   if (user) {
@@ -140,11 +141,12 @@ apiRouter.post('/auth/login', async (req, res) => {
 
 
 
-
+//endpoint to get all the groups in the database
 apiRouter.get('/getGroups', async (req, res) => {
   const groups = await getGroups();
   res.send(groups);
 })
+//adds a single group to the database
 apiRouter.post('/addGroup', async (req, res) => {
   const group = {...req.body, ip:req.ip};
   await addGroup(group);
@@ -154,7 +156,7 @@ apiRouter.post('/addGroup', async (req, res) => {
 
 
 
-
+//sets the users cookie
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
     secure: true,

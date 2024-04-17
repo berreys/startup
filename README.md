@@ -61,3 +61,15 @@ To view the functionality of the web app currently, I suggest logging in as a us
 This web app now works across multiple browsers. Its data is now persistable in a mongodb database. This is made possible by changing the API endpoints from the last deliverable to now access mongodb databases which store the necessary information. 
 
 Read the second paragraph of the service deliverable to see how to best view the functionality of the application. 
+
+## Websocket Deliverable
+This web app now automatically updates the values of debts owed to other users using websockets. When a user changes their input, every other user currently connected to the socket will instantaneously be able to see their new value and how much they owe.
+
+To best test the functionality of this deliverable:
+
+1) Login or create a user.
+2) Join or create a group, navigate to the groupview page.
+3) Copy the group id.
+4) Login or create another user.
+5) Join the group by pasting the id.
+6) Change the values on either of the user's page, and notice that the amount owed changes when doing so.

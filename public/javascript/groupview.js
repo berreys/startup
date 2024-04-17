@@ -226,8 +226,10 @@ async function setGroups(groups){
     }
 }
 
-//on change of amount entered, we send a message to the websocket 
-//on receival of websocket message, we display a message to the user that changes have happened, so they should refresh the page. 
+
+
+//WEBSOCKET CODE
+
 
 const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
 const socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
@@ -243,6 +245,7 @@ socket.onmessage = async (event) => {
     const text = await event.data.text();
     const chat = JSON.parse(text);
     appendMsg('friend', chat.name, chat.msg);
+    loadValues();
 };
 // If the webSocket is closed then disable the interface
 socket.onclose = (event) => {

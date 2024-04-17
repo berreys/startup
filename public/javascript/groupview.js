@@ -225,3 +225,42 @@ async function setGroups(groups){
         localStorage.setItem('groups', JSON.stringify(groups));
     }
 }
+
+//on change of amount entered, we send a message to the websocket 
+//on receival of websocket message, we display a message to the user that changes have happened, so they should refresh the page. 
+
+const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+const socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+
+// Display that we have opened the webSocket
+socket.onopen = (event) => {
+    console.log('onopen');
+    appendMsg('system', 'websocket', 'connected');
+};
+// Display messages we receive from our friends
+socket.onmessage = async (event) => {
+    console.log('onmessage')
+    const text = await event.data.text();
+    const chat = JSON.parse(text);
+    appendMsg('friend', chat.name, chat.msg);
+};
+// If the webSocket is closed then disable the interface
+socket.onclose = (event) => {
+    console.log('onclose')
+    appendMsg('system', 'websocket', 'disconnected');
+};
+// Send a message over the webSocket
+function sendMessage() {
+    const msg = 'this is a test message'
+    if (!!msg) {
+      appendMsg('me', 'me', msg);
+      const name = 'Test Name'
+      socket.send(`{"name":"${name}", "msg":"${msg}"}`);
+    }
+}
+
+
+
+function appendMsg(cls, from, msg) {
+    console.log(msg);
+}

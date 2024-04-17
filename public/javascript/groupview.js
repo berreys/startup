@@ -86,6 +86,10 @@ function loadValues() {
 }
 
 async function changeValue(value){
+    if(value === null){
+        value = document.querySelector('#input-value').value;
+    }
+    console.log(value)
     //get username and group from localstorage
     const groupString = localStorage.getItem('currentGroup');
     var group = JSON.parse(groupString);
@@ -246,6 +250,8 @@ socket.onmessage = async (event) => {
     const chat = JSON.parse(text);
     appendMsg('friend', chat.name, chat.msg);
     loadValues();
+    loadUserVal();
+    getDebt();
 };
 // If the webSocket is closed then disable the interface
 socket.onclose = (event) => {

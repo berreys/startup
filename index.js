@@ -24,7 +24,7 @@ app.use((_req, res) => {
 //   console.log(`Listening on port ${port}`);
 // });
 
-// var currentUsername = 'unchanged';
+var currentUsername = 'unchanged';
 
 apiRouter.get('/username', (_req, res) => {
   const response = {username: currentUsername};

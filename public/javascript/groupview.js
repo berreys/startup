@@ -246,12 +246,12 @@ const socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
 
 // Display that we have opened the webSocket
 socket.onopen = (event) => {
-    console.log('onopen');
+    // console.log('onopen');
     appendMsg('system', 'websocket', 'connected');
 };
 // Display messages we receive from our friends
 socket.onmessage = async (event) => {
-    console.log('onmessage')
+    // console.log('onmessage')
     const text = await event.data.text();
     const chat = JSON.parse(text);
     appendMsg('friend', chat.name, chat.msg);
@@ -261,7 +261,7 @@ socket.onmessage = async (event) => {
 };
 // If the webSocket is closed then disable the interface
 socket.onclose = (event) => {
-    console.log('onclose')
+    // console.log('onclose')
     appendMsg('system', 'websocket', 'disconnected');
 };
 // Send a message over the webSocket

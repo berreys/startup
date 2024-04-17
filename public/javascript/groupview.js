@@ -63,6 +63,11 @@ function loadValues() {
     }
     var currGroup = JSON.parse(currGroupStr);
     var tableEl = document.querySelector('.group-view-table');
+    tableEl.innerHTML = `<tr>
+                            <th>User:</th>
+                            <th>They Spent:</th>
+                            <th>You Owe:</th>
+                        </tr>`;
     currGroup.values.forEach(function(item){
         //make a new row for each person who is not the current user
         //these rows will be augmented in real time using web sockets
@@ -121,6 +126,7 @@ async function changeValue(value){
     localStorage.setItem('groups', JSON.stringify(groups));
     await setGroups(JSON.stringify(groups));
     getDebt();
+    sendMessage();
 }
 
 
